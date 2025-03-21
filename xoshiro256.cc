@@ -1,11 +1,12 @@
 #include <iostream>
+#include <iomanip>
 #include <array>
 #include <cstdint>
 
 struct Xoshiro256 {
   using state_t = std::array<uint64_t, 4>;
 
-  state_t state[4];
+  state_t state;
 
   static uint64_t rotl(const uint64_t x, int k) {
     return (x << k) | (x >> (64 - k));
@@ -27,7 +28,7 @@ struct Xoshiro256 {
 };
 
 int main() {
-  Xoshiro256::state_t state = {
+  Xoshiro256::state_t seed = {
     0x123456789abcdef0, 
     0xfedcba9876543210,
     0xdeadbeefcafebabe,
@@ -37,7 +38,7 @@ int main() {
   Xoshiro256 rng(seed);
 
   for (int i = 0; i < 50; i++) {
-    std::cout << rng.next() << std::endl;
+    std::cout << "0x" << std::hex << std::setfill('0') << std::setw(64/4) << rng.next() << std::endl;
   }
 
   return 0;

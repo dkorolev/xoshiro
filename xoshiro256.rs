@@ -29,6 +29,6 @@ fn main() {
   ];
   let mut rng = Xoshiro256::new(seed);
   for _ in 0..50 {
-    println!("{}", rng.next());
+    println!("0x{:0>16x}", rng.next());
   }
 }
