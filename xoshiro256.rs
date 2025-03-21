@@ -25,7 +25,7 @@ fn main() {
     0x123456789abcdef0,
     0xfedcba9876543210,
     0xdeadbeefcafebabe,
-    0x0badc0ffee0ddf00d
+    0xbadc0ffee0ddf00d
   ];
   let mut rng = Xoshiro256::new(seed);
   for _ in 0..50 {
